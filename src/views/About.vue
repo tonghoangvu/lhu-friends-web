@@ -24,7 +24,7 @@
 
     export default defineComponent({
         name: 'About',
-        components: {},
+        components: {}
     });
 </script>
 

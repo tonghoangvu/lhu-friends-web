@@ -2,17 +2,18 @@
     <main class="flex-col">
         <nav class="flex-row flex-wrap bg-0">
             <div class="flex-row m05">
-                <router-link class="tab px1" to="/">Home</router-link>
-                <router-link class="tab px1" to="/about">About</router-link>
+                <router-link class="tab px1" to="/">Tìm kiếm</router-link>
+                <router-link class="tab px1" to="/about">Giới thiệu</router-link>
             </div>
             <div class="flex-row align-center m05 mla">
                 <span class="spinner"></span>
                 <button class="m05 ml1 no-wrap">Đăng nhập</button>
             </div>
         </nav>
-        <div class="flex-autosize m05">
+        <div id="content" class="flex-autosize">
             <router-view/>
         </div>
+        <a class="back-to-top" href="#"></a>
     </main>
 </template>
 
@@ -21,7 +22,7 @@
 
     export default defineComponent({
         name: 'App',
-        components: {},
+        components: {}
     });
 </script>
 
@@ -41,5 +42,9 @@
     .tab.router-link-active {
         color: var(--primary-color);
         border-bottom: var(--bold-thickness) solid var(--primary-color);
+    }
+
+    #content {
+        overflow: auto;
     }
 </style>
