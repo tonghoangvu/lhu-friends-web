@@ -22,7 +22,17 @@
     <script>
         loadConfig(defaultConfig);
         loadConfig(baseTheme);
-        loadConfig(lightTheme);
+
+        // Initial theme
+        reloadTheme(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+
+        // Track system theme changes
+        window.matchMedia('(prefers-color-scheme: dark)')
+                .addEventListener('change', event => reloadTheme(event.matches));
+
+        function reloadTheme(isDark) {
+            loadConfig(isDark ? darkTheme : lightTheme);
+        }
     </script>
 </head>
 <body class="bg-1">
