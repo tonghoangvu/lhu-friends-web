@@ -1,0 +1,29 @@
+::-webkit-scrollbar {
+    width: var(--large-spacing);
+    height: var(--large-spacing);
+}
+
+::-webkit-scrollbar-button {
+    display: none;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-corner {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--background-gray-2);
+    border-radius: var(--rounded-border-radius);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--background-gray-1);
+}
+
+::-webkit-scrollbar-thumb:active {
+    background-color: var(--background-gray);
+}

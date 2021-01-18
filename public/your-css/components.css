@@ -1,0 +1,28 @@
+.back-to-top, .back-to-top:hover {
+    all: unset;
+    display: inline-block;
+    cursor: pointer;
+    position: fixed;
+    right: 2rem;
+    bottom: 2rem;
+    font-size: 2rem;
+    padding: 0.75rem;
+    border: solid var(--primary-color);
+    border-width: 0 var(--bold-thickness) var(--bold-thickness) 0;
+    transform: rotate(-135deg);
+}
+
+.spinner {
+    display: inline-block;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    border: var(--bold-thickness) solid var(--background-color-2);
+    border-top: var(--bold-thickness) solid var(--primary-color);
+    animation: spin var(--fast-animation-duration) linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

@@ -1,0 +1,32 @@
+::selection {
+    background-color: var(--primary-transparent-1);
+}
+
+::-moz-selection {
+    background-color: var(--primary-transparent-1);
+}
+
+::-webkit-datetime-edit-ampm-field:focus,
+::-webkit-datetime-edit-millisecond-field:focus,
+::-webkit-datetime-edit-second-field:focus,
+::-webkit-datetime-edit-minute-field:focus,
+::-webkit-datetime-edit-hour-field:focus,
+::-webkit-datetime-edit-day-field:focus,
+::-webkit-datetime-edit-week-field:focus,
+::-webkit-datetime-edit-month-field:focus,
+::-webkit-datetime-edit-year-field:focus,
+::-webkit-datetime-edit-text:focus {
+    background-color: var(--primary-transparent-1);
+}
+
+input[type="number"]::-webkit-inner-spin-button {
+    appearance: none;
+}
+
+input[type="time"]::-webkit-calendar-picker-indicator,
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="datetime-local"]::-webkit-calendar-picker-indicator,
+input[type="week"]::-webkit-calendar-picker-indicator,
+input[type="month"]::-webkit-calendar-picker-indicator {
+    filter: invert(0.5);
+}

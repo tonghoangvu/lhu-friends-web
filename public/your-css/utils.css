@@ -1,0 +1,16 @@
+.no-select { user-select: none; }
+
+.no-wrap { white-space: nowrap; }
+
+.no-focus-outline:focus { outline: none; }
+
+.cursor-pointer { cursor: pointer; }
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: block;
+}
+
+.float-left { float: left; }
+.float-right { float: right; }
