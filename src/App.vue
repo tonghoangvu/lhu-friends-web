@@ -1,13 +1,13 @@
 <template>
     <main class="flex-col">
-        <nav class="flex-row flex-wrap bg-0">
-            <div class="flex-row m05">
+        <nav class="flex-row flex-wrap bg-white">
+            <div class="flex-row mx1 my05">
                 <router-link class="tab px1" to="/">Tìm kiếm</router-link>
                 <router-link class="tab px1" to="/about">Giới thiệu</router-link>
             </div>
-            <div class="flex-row align-center m05 mla">
+            <div class="flex-row align-center mla">
                 <span class="spinner"></span>
-                <button class="m05 ml1 no-wrap">Đăng nhập</button>
+                <button class="m1 ml1 no-wrap">Đăng nhập</button>
             </div>
         </nav>
         <div id="content" class="flex-autosize">
@@ -35,13 +35,13 @@
     .tab {
         display: flex;
         align-items: center;
-        color: var(--text-color);
+        color: var(--text-color-0);
         border-bottom: var(--bold-thickness) solid transparent;
     }
 
     .tab.router-link-active {
-        color: var(--primary-color);
-        border-bottom: var(--bold-thickness) solid var(--primary-color);
+        color: var(--primary-color-0);
+        border-bottom: var(--bold-thickness) solid var(--primary-color-0);
     }
 
     #content {
