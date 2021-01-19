@@ -1,5 +1,4 @@
-.back-to-top, .back-to-top:hover {
-    all: unset;
+.back-to-top {
     display: inline-block;
     cursor: pointer;
     position: fixed;
@@ -10,6 +9,11 @@
     border: solid var(--primary-color-0);
     border-width: 0 var(--bold-thickness) var(--bold-thickness) 0;
     transform: rotate(-135deg);
+}
+
+.back-to-top:hover {
+    border: solid var(--primary-color-0);
+    border-width: 0 var(--bold-thickness) var(--bold-thickness) 0;
 }
 
 .spinner {

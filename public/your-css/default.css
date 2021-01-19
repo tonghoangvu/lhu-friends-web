@@ -15,7 +15,7 @@ html, body, p, button, input, textarea, select {
 body {
     margin: 0;
     line-height: var(--default-line-height);
-    background-color: var(--background-color-0);
+    background-color: var(--background-color-1);
 }
 
 /* HEADINGS */
@@ -107,7 +107,7 @@ input[type="tel"],
 input[type="search"] {
     background-color: transparent;
     border-radius: var(--default-border-radius);
-    border: var(--default-thickness) solid var(--background-color-2);
+    border: var(--default-thickness) solid var(--background-gray-2);
     padding: calc(var(--default-spacing) - var(--default-thickness));
 }
 
@@ -163,20 +163,20 @@ th {
 }
 
 tbody > tr:nth-child(odd) {
-    background-color: var(--background-color-1);
+    background-color: var(--background-color-2);
 }
 
 /* DETAILS & SUMMARY */
 
 details {
-    background-color: var(--background-color-1);
+    background-color: var(--background-color-2);
     border-radius: var(--default-border-radius);
 }
 
 summary {
     border: none;
     cursor: pointer;
-    background-color: var(--background-color-1);
+    background-color: var(--background-color-2);
     padding: var(--default-spacing);
     border-radius: var(--default-border-radius);
 }
@@ -191,7 +191,7 @@ blockquote {
     padding:
         var(--default-spacing)
         calc(2 * var(--default-spacing) - var(--default-thickness));
-    background-color: var(--background-color-1);
+    background-color: var(--background-color-2);
 }
 
 kbd {
@@ -209,7 +209,7 @@ b, strong {
 
 hr {
     border: none;
-    border-top: var(--thin-thickness) solid var(--background-color-2);
+    border-top: var(--thin-thickness) solid var(--background-gray-2);
 }
 
 optgroup, option {

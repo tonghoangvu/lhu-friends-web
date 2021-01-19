@@ -1,6 +1,6 @@
 <template>
     <main class="flex-col">
-        <nav class="flex-row flex-wrap bg-white">
+        <nav class="flex-row flex-wrap bg-0">
             <div class="flex-row mx1 my05">
                 <router-link class="tab px1" to="/">Tìm kiếm</router-link>
                 <router-link class="tab px1" to="/about">Giới thiệu</router-link>

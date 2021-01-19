@@ -76,9 +76,9 @@ const lightTheme = {
     '--background-color-1': 'rgb(var(--gray-100))',
     '--background-color-2': 'rgb(var(--gray-200))',
 
-    '--background-gray-0': 'rgb(var(--gray-600))',
-    '--background-gray-1': 'rgb(var(--gray-500))',
-    '--background-gray-2': 'rgb(var(--gray-400))',
+    '--background-gray-0': 'rgb(var(--gray-500))',
+    '--background-gray-1': 'rgb(var(--gray-400))',
+    '--background-gray-2': 'rgb(var(--gray-300))',
 
     '--background-reverse-0': 'rgb(var(--black))',
     '--background-reverse-1': 'rgb(var(--gray-900))',
@@ -112,9 +112,9 @@ const darkTheme = {
     '--background-color-1': 'rgb(var(--gray-900))',
     '--background-color-2': 'rgb(var(--gray-800))',
 
-    '--background-gray-0': 'rgb(var(--gray-400))',
-    '--background-gray-1': 'rgb(var(--gray-500))',
-    '--background-gray-2': 'rgb(var(--gray-600))',
+    '--background-gray-0': 'rgb(var(--gray-500))',
+    '--background-gray-1': 'rgb(var(--gray-600))',
+    '--background-gray-2': 'rgb(var(--gray-700))',
 
     '--background-reverse-0': 'rgb(var(--white))',
     '--background-reverse-1': 'rgb(var(--gray-100))',
