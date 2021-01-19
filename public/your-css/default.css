@@ -15,14 +15,14 @@ html, body, p, button, input, textarea, select {
 body {
     margin: 0;
     line-height: var(--default-line-height);
-    background-color: var(--background-color);
+    background-color: var(--background-color-0);
 }
 
 /* HEADINGS */
 
 h1, h2, h3, h4, h5, h6 {
     margin: 0 0 var(--default-spacing) 0;
-    color: var(--text-color);
+    color: var(--text-color-0);
     font-weight: var(--semibold-font-weight);
 }
 
@@ -42,7 +42,7 @@ p { margin: 0 0 var(--default-spacing) 0; }
 a {
     cursor: pointer;
     text-decoration: none;
-    color: var(--primary-color);
+    color: var(--primary-color-0);
 }
 
 a:hover {
@@ -60,7 +60,7 @@ input[type="submit"] {
     cursor: pointer;
     border-radius: var(--default-border-radius);
     color: var(--text-color-on-solid);
-    background-color: var(--primary-color);
+    background-color: var(--primary-color-0);
     padding:
         var(--default-spacing)
         calc(var(--default-spacing) + 2 * var(--default-thickness));
@@ -127,7 +127,7 @@ input[type="week"]:focus,
 input[type="tel"]:focus,
 input[type="search"]:focus {
     outline: none;
-    border: var(--default-thickness) solid var(--primary-color);
+    border: var(--default-thickness) solid var(--primary-color-0);
 }
 
 /* OTHER INPUT */
@@ -187,7 +187,7 @@ summary:focus { outline: none; }
 
 blockquote {
     margin: 0;
-    border-left: var(--bold-thickness) solid var(--primary-color);
+    border-left: var(--bold-thickness) solid var(--primary-color-0);
     padding:
         var(--default-spacing)
         calc(2 * var(--default-spacing) - var(--default-thickness));

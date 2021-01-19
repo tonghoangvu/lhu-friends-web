@@ -7,7 +7,7 @@
     bottom: 2rem;
     font-size: 2rem;
     padding: 0.75rem;
-    border: solid var(--primary-color);
+    border: solid var(--primary-color-0);
     border-width: 0 var(--bold-thickness) var(--bold-thickness) 0;
     transform: rotate(-135deg);
 }
@@ -18,7 +18,7 @@
     height: 1.5rem;
     border-radius: 50%;
     border: var(--bold-thickness) solid var(--background-color-2);
-    border-top: var(--bold-thickness) solid var(--primary-color);
+    border-top: var(--bold-thickness) solid var(--primary-color-0);
     animation: spin var(--fast-animation-duration) linear infinite;
 }
 

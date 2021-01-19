@@ -25,5 +25,5 @@
 }
 
 ::-webkit-scrollbar-thumb:active {
-    background-color: var(--background-gray);
+    background-color: var(--background-gray-0);
 }

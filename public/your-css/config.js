@@ -38,13 +38,13 @@ const defaultConfig = {
 const baseTheme = {
     // Primary color
 
-    '--primary-color': 'rgb(var(--base-color))',
+    '--primary-color-0': 'rgb(var(--base-color-0))',
     '--primary-color-1': 'rgb(var(--base-color-1))',
     '--primary-color-2': 'rgb(var(--base-color-2))',
 
-    '--primary-transparent': 'rgba(var(--base-color), 0.75)',
-    '--primary-transparent-1': 'rgba(var(--base-color), 0.5)',
-    '--primary-transparent-2': 'rgba(var(--base-color), 0.25)',
+    '--primary-transparent-0': 'rgba(var(--base-color-0), 0.75)',
+    '--primary-transparent-1': 'rgba(var(--base-color-0), 0.5)',
+    '--primary-transparent-2': 'rgba(var(--base-color-0), 0.25)',
 
     '--text-color-on-solid': 'white',
 }
@@ -52,73 +52,73 @@ const baseTheme = {
 const lightTheme = {
     // Base color
 
-    '--base-color': 'var(--blue-500)',
+    '--base-color-0': 'var(--blue-500)',
     '--base-color-1': 'var(--blue-600)',
     '--base-color-2': 'var(--blue-700)',
 
     // Text color
 
-    '--text-color': 'rgb(var(--gray-900))',
-    '--text-color-1': 'rgb(var(--gray-800))',
-    '--text-color-2': 'rgb(var(--gray-700))',
+    '--text-color-0': 'rgb(var(--black))',
+    '--text-color-1': 'rgb(var(--gray-900))',
+    '--text-color-2': 'rgb(var(--gray-800))',
 
-    '--text-gray': 'rgb(var(--gray-400))',
+    '--text-gray-0': 'rgb(var(--gray-400))',
     '--text-gray-1': 'rgb(var(--gray-500))',
     '--text-gray-2': 'rgb(var(--gray-600))',
 
-    '--text-reverse': 'rgb(var(--gray-100))',
-    '--text-reverse-1': 'rgb(var(--gray-200))',
-    '--text-reverse-2': 'rgb(var(--gray-300))',
+    '--text-reverse-0': 'rgb(var(--white))',
+    '--text-reverse-1': 'rgb(var(--gray-100))',
+    '--text-reverse-2': 'rgb(var(--gray-200))',
 
     // Background color
 
-    '--background-color': 'rgb(var(--gray-100))',
-    '--background-color-1': 'rgb(var(--gray-200))',
-    '--background-color-2': 'rgb(var(--gray-300))',
+    '--background-color-0': 'rgb(var(--white))',
+    '--background-color-1': 'rgb(var(--gray-100))',
+    '--background-color-2': 'rgb(var(--gray-200))',
 
-    '--background-gray': 'rgb(var(--gray-600))',
+    '--background-gray-0': 'rgb(var(--gray-600))',
     '--background-gray-1': 'rgb(var(--gray-500))',
     '--background-gray-2': 'rgb(var(--gray-400))',
 
-    '--background-reverse': 'rgb(var(--gray-900))',
-    '--background-reverse-1': 'rgb(var(--gray-800))',
-    '--background-reverse-2': 'rgb(var(--gray-700))'
+    '--background-reverse-0': 'rgb(var(--black))',
+    '--background-reverse-1': 'rgb(var(--gray-900))',
+    '--background-reverse-2': 'rgb(var(--gray-800))'
 }
 
 const darkTheme = {
     // Base color
 
-    '--base-color': 'var(--blue-500)',
+    '--base-color-0': 'var(--blue-500)',
     '--base-color-1': 'var(--blue-400)',
     '--base-color-2': 'var(--blue-300)',
 
     // Text color
 
-    '--text-color': 'rgb(var(--gray-100))',
-    '--text-color-1': 'rgb(var(--gray-200))',
-    '--text-color-2': 'rgb(var(--gray-300))',
+    '--text-color-0': 'rgb(var(--white))',
+    '--text-color-1': 'rgb(var(--gray-100))',
+    '--text-color-2': 'rgb(var(--gray-200))',
 
-    '--text-gray': 'rgb(var(--gray-600))',
+    '--text-gray-0': 'rgb(var(--gray-600))',
     '--text-gray-1': 'rgb(var(--gray-500))',
     '--text-gray-2': 'rgb(var(--gray-400))',
 
-    '--text-reverse': 'rgb(var(--gray-900))',
-    '--text-reverse-1': 'rgb(var(--gray-800))',
-    '--text-reverse-2': 'rgb(var(--gray-700))',
+    '--text-reverse-0': 'rgb(var(--black))',
+    '--text-reverse-1': 'rgb(var(--gray-900))',
+    '--text-reverse-2': 'rgb(var(--gray-800))',
 
     // Background color
 
-    '--background-color': 'rgb(var(--gray-900))',
-    '--background-color-1': 'rgb(var(--gray-800))',
-    '--background-color-2': 'rgb(var(--gray-700))',
+    '--background-color-0': 'rgb(var(--black))',
+    '--background-color-1': 'rgb(var(--gray-900))',
+    '--background-color-2': 'rgb(var(--gray-800))',
 
-    '--background-gray': 'rgb(var(--gray-400))',
+    '--background-gray-0': 'rgb(var(--gray-400))',
     '--background-gray-1': 'rgb(var(--gray-500))',
     '--background-gray-2': 'rgb(var(--gray-600))',
 
-    '--background-reverse': 'rgb(var(--gray-100))',
-    '--background-reverse-1': 'rgb(var(--gray-200))',
-    '--background-reverse-2': 'rgb(var(--gray-300))'
+    '--background-reverse-0': 'rgb(var(--white))',
+    '--background-reverse-1': 'rgb(var(--gray-100))',
+    '--background-reverse-2': 'rgb(var(--gray-200))'
 }
 
 function changeCSSVariable(name, value) {

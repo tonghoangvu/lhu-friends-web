@@ -20,14 +20,14 @@
 .rounded-radius { border-radius: var(--rounded-border-radius); }
 
 .text-on-solid { color: var(--text-color-on-solid); }
-.text-primary { color: var(--primary-color); }
-.text-0 { color: var(--text-color); }
+.text-primary { color: var(--primary-color-0); }
+.text-0 { color: var(--text-color-0); }
 .text-1 { color: var(--text-color-1); }
 .text-2 { color: var(--text-color-2); }
-.text-gray-0 { color: var(--text-gray); }
+.text-gray-0 { color: var(--text-gray-0); }
 .text-gray-1 { color: var(--text-gray-1); }
 .text-gray-2 { color: var(--text-gray-2); }
-.text-reverse-0 { color: var(--text-reverse); }
+.text-reverse-0 { color: var(--text-reverse-0); }
 .text-reverse-1 { color: var(--text-reverse-1); }
 .text-reverse-2 { color: var(--text-reverse-2); }
 
@@ -45,14 +45,14 @@
 .text-black { color: rgb(var(--black)); }
 .text-white { color: rgb(var(--white)); }
 
-.bg-primary { background-color: var(--primary-color); }
-.bg-0 { background-color: var(--background-color); }
+.bg-primary { background-color: var(--primary-color-0); }
+.bg-0 { background-color: var(--background-color-0); }
 .bg-1 { background-color: var(--background-color-1); }
 .bg-2 { background-color: var(--background-color-2); }
-.bg-gray-0 { background-color: var(--background-gray); }
+.bg-gray-0 { background-color: var(--background-gray-0); }
 .bg-gray-1 { background-color: var(--background-gray-1); }
 .bg-gray-2 { background-color: var(--background-gray-2); }
-.bg-reverse-0 { background-color: var(--background-reverse); }
+.bg-reverse-0 { background-color: var(--background-reverse-0); }
 .bg-reverse-1 { background-color: var(--background-reverse-1); }
 .bg-reverse-2 { background-color: var(--background-reverse-2); }
 
