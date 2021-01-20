@@ -32,19 +32,30 @@
                 </tr>
                 <tr>
                     <td class="text-center">0</td>
-                    <td contenteditable="true" placeholder="Regex" id="studentId"></td>
-                    <td contenteditable="true" placeholder="Regex" id="fullName"></td>
-                    <td contenteditable="true" placeholder="Regex" id="classId"></td>
-                    <td contenteditable="true" placeholder="Match" id="gender"></td>
-                    <td contenteditable="true" placeholder="Regex" id="birthday"></td>
-                    <td contenteditable="true" placeholder="Regex" id="placeOfBirth"></td>
-                    <td contenteditable="true" placeholder="Regex" id="ethnic"></td>
-                    <td contenteditable="true" placeholder="Regex" id="nationality"></td>
+                    <td contenteditable="true" placeholder="Regex" id="studentId"
+                        v-on:keypress.enter="onFiltersChange"></td>
+                    <td contenteditable="true" placeholder="Regex" id="fullName"
+                        v-on:keypress.enter="onFiltersChange"></td>
+                    <td contenteditable="true" placeholder="Regex" id="classId"
+                        v-on:keypress.enter="onFiltersChange"></td>
+                    <td contenteditable="true" placeholder="Match" id="gender"
+                        v-on:keypress.enter="onFiltersChange"></td>
+                    <td contenteditable="true" placeholder="Regex" id="birthday"
+                        v-on:keypress.enter="onFiltersChange"></td>
+                    <td contenteditable="true" placeholder="Regex" id="placeOfBirth"
+                        v-on:keypress.enter="onFiltersChange"></td>
+                    <td contenteditable="true" placeholder="Regex" id="ethnic"
+                        v-on:keypress.enter="onFiltersChange"></td>
+                    <td contenteditable="true" placeholder="Regex" id="nationality"
+                        v-on:keypress.enter="onFiltersChange"></td>
                     <td></td>
                     <td></td>
-                    <td contenteditable="true" placeholder="Regex" id="phone"></td>
-                    <td contenteditable="true" placeholder="Regex" id="email"></td>
-                    <td contenteditable="true" placeholder="Regex" id="facebook"></td>
+                    <td contenteditable="true" placeholder="Regex" id="phone"
+                        v-on:keypress.enter="onFiltersChange"></td>
+                    <td contenteditable="true" placeholder="Regex" id="email"
+                        v-on:keypress.enter="onFiltersChange"></td>
+                    <td contenteditable="true" placeholder="Regex" id="facebook"
+                        v-on:keypress.enter="onFiltersChange"></td>
                 </tr>
             </thead>
             <tbody>
@@ -66,8 +77,8 @@
         },
         data() {
             return {
-                rawPage: 0,
-                rawSize: 10,
+                rawPage: 0 as number,
+                rawSize: 10 as number,
                 studentList: []
             };
         },
@@ -88,6 +99,10 @@
             }
         },
         methods: {
+            onFiltersChange(event: KeyboardEvent) {
+                event.preventDefault();
+                this.reload();
+            },
             prevPage() {
                 if (this.rawPage <= 0)
                     return;
@@ -96,18 +111,33 @@
             nextPage() {
                 this.rawPage++;
             },
+            buildQuery(): Record<string, string> {
+                const query: Record<string, string> = {};
+                const FILTER_FIELDS: string[] = [
+                    'studentId', 'fullName', 'classId', 'gender', 'birthday',
+                    'placeOfBirth', 'ethnic', 'nationality', 'phone', 'email',
+                    'facebook'
+                ];
+                for (const field of FILTER_FIELDS) {
+                    const fieldValue = document.getElementById(field)?.innerText;
+                    if (fieldValue)
+                        query[field] = fieldValue;
+                }
+                return query;
+            },
             reload() {
-                // Get computed data
-                const query = {};
+                // Prepare request data
                 const page: number = this.page;
                 const size: number = this.size;
-
-                // Fetch data
-                let failed = false;
+                const params = '?' + ['page=' + page, 'size=' + size].join('&');
+                const query = this.buildQuery();
                 const API_URL = process.env.NODE_ENV === 'production'
                     ? '/api/students/'
                     : 'http://localhost:3002/api/students/';
-                fetch(API_URL + '?page=' + page + '&size=' + size, {
+
+                // Fetch API
+                let failed = false;
+                fetch(API_URL + params, {
                     mode: 'cors',
                     headers: {
                         'Accept': 'application/json',
@@ -122,7 +152,7 @@
                     })
                     .then(parsedJSON => {
                         if (failed)
-                            return alert(parsedJSON.code + ': ' + parsedJSON.message);
+                            return alert('Error ' + parsedJSON.code + ': ' + parsedJSON.message);
 
                         // Add index field to each item
                         for (let i = 0; i < parsedJSON.length; i++)
@@ -131,7 +161,7 @@
                         this.studentList = parsedJSON;
                     })
                     .catch(error => {
-                        console.log('Error', error);
+                        alert('Internal error: ' + error.message);
                     });
             }
         }
