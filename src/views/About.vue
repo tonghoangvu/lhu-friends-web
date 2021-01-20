@@ -1,5 +1,5 @@
 <template>
-    <div class="flex-col my2 flex-center">
+    <div class="flex-col my2 flex-center no-select">
         <img src="/icons/icon-96.png" alt="">
         <h2 class="text-primary m0">lhu-friends</h2>
         <p class="text-gray">Tiện ích tìm kiếm bạn bè LHU</p>
