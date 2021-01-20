@@ -1,25 +1,25 @@
 <template>
     <tr>
-        <td class="text-center">{{ data.index }}</td>
-        <td class="text-center">{{ data.studentId }}</td>
-        <td>{{ data.fullName }}</td>
-        <td class="text-center">{{ data.classId }}</td>
-        <td class="text-center">{{ data.gender }}</td>
-        <td class="text-center">{{ data.birthday }}</td>
-        <td class="text-center">{{ data.placeOfBirth }}</td>
-        <td class="text-center">{{ data.ethnic }}</td>
-        <td class="text-center">{{ data.nationality }}</td>
-        <td class="img no-select"><img v-bind:src="data.image" alt=""></td>
-        <td class="img no-select"><img v-bind:src="data.avatar" alt=""></td>
+        <td class="text-center">{{ student.index }}</td>
+        <td class="text-center">{{ student.studentId }}</td>
+        <td>{{ student.fullName }}</td>
+        <td class="text-center">{{ student.classId }}</td>
+        <td class="text-center">{{ student.gender }}</td>
+        <td class="text-center">{{ student.birthday }}</td>
+        <td class="text-center">{{ student.placeOfBirth }}</td>
+        <td class="text-center">{{ student.ethnic }}</td>
+        <td class="text-center">{{ student.nationality }}</td>
+        <td class="img no-select"><img v-bind:src="student.image" alt=""></td>
+        <td class="img no-select"><img v-bind:src="student.avatar" alt=""></td>
         <td class="text-center">
-            <a v-bind:href="'tel:+84' + data.phone">{{ data.phone }}</a>
+            <a v-bind:href="'tel:+84' + student.phone">{{ student.phone }}</a>
         </td>
         <td>
-            <a v-bind:href="'mailto:' + data.email">{{ data.email }}</a>
+            <a v-bind:href="'mailto:' + student.email">{{ student.email }}</a>
         </td>
         <td>
-            <a v-bind:href="data.facebook" target="_blank" rel="noreferrer">
-                {{ data.facebook }}
+            <a v-bind:href="student.facebook" target="_blank" rel="noreferrer">
+                {{ student.facebook }}
             </a>
         </td>
     </tr>
