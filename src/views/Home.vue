@@ -59,8 +59,8 @@
                 </tr>
             </thead>
             <tbody>
-                <StudentItem v-for="(value, name, index) in studentList"
-                    v-bind:key="index" v-bind:data="value"/>
+                <StudentItem v-for="student in studentList"
+                    v-bind:key="student.index" v-bind:student="student"/>
             </tbody>
         </table>
     </div>

@@ -30,7 +30,9 @@
 
     export default defineComponent({
         name: 'StudentItem',
-        props: ['data'],
+        props: {
+            student: Object
+        },
         components: {}
     });
 </script>

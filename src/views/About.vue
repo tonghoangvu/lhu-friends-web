@@ -10,9 +10,7 @@
             </a>
             Made with <span class="text-red">&#x2764;</span>
             <br>
-            <a target="_blank" href="https://icons8.com/icons/set/meeting">
-                Meeting icon
-            </a>
+            <a target="_blank" href="https://icons8.com/icons/set/meeting">Meeting icon</a>
             icon by
             <a target="_blank" href="https://icons8.com">Icons8</a>
         </p>
