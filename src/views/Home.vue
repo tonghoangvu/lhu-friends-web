@@ -1,15 +1,17 @@
 <template>
-    <header class="p1 clearfix">
-        <button id="prev-button" class="mr05">Trước</button>
-        <input type="number" placeholder="page" value="0"
-            id="page-input" class="number-input mr05">
-        <button id="next-button" class="mr05">Sau</button>
-        <input type="number" placeholder="size" value="10"
-            id="size-input" class="number-input mr05">
+    <header id="home-top" class="clearfix p1 no-select">
+        <button class="mr05" v-on:click="prevPage">Trước</button>
+        <input type="number" class="number-input mr05" placeholder="Page"
+            v-model.number.lazy="rawPage">
+        <button class="mr05" v-on:click="nextPage">Sau</button>
+
+        <input type="number" class="number-input mr05" placeholder="Size"
+            v-model.number.lazy="rawSize">
         <label>mục mỗi trang</label>
-        <button class="float-right">Tải lại</button>
+
+        <button class="float-right" v-on:click="reload">Tải lại</button>
     </header>
-    <div id="table-container" class="p1 pt0 float-left">
+    <div class="p1 pt0 float-left">
         <table>
             <thead class="no-select">
                 <tr>
@@ -30,35 +32,24 @@
                 </tr>
                 <tr>
                     <td class="text-center">0</td>
-                    <td contenteditable="true" placeholder="Regex" id="studentId"
-                        class="single-line"></td>
-                    <td contenteditable="true" placeholder="Regex" id="fullName"
-                        class="single-line"></td>
-                    <td contenteditable="true" placeholder="Regex" id="classId"
-                        class="single-line"></td>
-                    <td contenteditable="true" placeholder="Match" id="gender"
-                        class="single-line"></td>
-                    <td contenteditable="true" placeholder="Regex" id="birthday"
-                        class="single-line"></td>
-                    <td contenteditable="true" placeholder="Regex" id="placeOfBirth"
-                        class="single-line"></td>
-                    <td contenteditable="true" placeholder="Regex" id="ethnic"
-                        class="single-line"></td>
-                    <td contenteditable="true" placeholder="Regex" id="nationality"
-                        class="single-line"></td>
+                    <td contenteditable="true" placeholder="Regex" id="studentId"></td>
+                    <td contenteditable="true" placeholder="Regex" id="fullName"></td>
+                    <td contenteditable="true" placeholder="Regex" id="classId"></td>
+                    <td contenteditable="true" placeholder="Match" id="gender"></td>
+                    <td contenteditable="true" placeholder="Regex" id="birthday"></td>
+                    <td contenteditable="true" placeholder="Regex" id="placeOfBirth"></td>
+                    <td contenteditable="true" placeholder="Regex" id="ethnic"></td>
+                    <td contenteditable="true" placeholder="Regex" id="nationality"></td>
                     <td></td>
                     <td></td>
-                    <td contenteditable="true" placeholder="Regex" id="phone"
-                        class="single-line"></td>
-                    <td contenteditable="true" placeholder="Regex" id="email"
-                        class="single-line"></td>
-                    <td contenteditable="true" placeholder="Regex" id="facebook"
-                        class="single-line"></td>
+                    <td contenteditable="true" placeholder="Regex" id="phone"></td>
+                    <td contenteditable="true" placeholder="Regex" id="email"></td>
+                    <td contenteditable="true" placeholder="Regex" id="facebook"></td>
                 </tr>
             </thead>
             <tbody>
-                <StudentItem v-for="(value, name, index) in studentList" v-bind:key="index"
-                    v-bind:data="value"/>
+                <StudentItem v-for="(value, name, index) in studentList"
+                    v-bind:key="index" v-bind:data="value"/>
             </tbody>
         </table>
     </div>
@@ -66,7 +57,7 @@
 
 <script lang="ts">
     import { defineComponent } from 'vue';
-    import StudentItem from "../components/StudentItem.vue";
+    import StudentItem from '../components/StudentItem.vue';
 
     export default defineComponent({
         name: 'Home',
@@ -75,7 +66,70 @@
         },
         data() {
             return {
+                rawPage: 0,
+                rawSize: 10,
                 studentList: []
+            };
+        },
+        computed: {
+            page(): number {
+                return this.rawPage >= 0 ? this.rawPage : 0;
+            },
+            size(): number {
+                return this.rawSize > 0 ? this.rawSize : 10;
+            }
+        },
+        watch: {
+            page() {
+                this.reload();
+            },
+            size() {
+                this.reload();
+            }
+        },
+        methods: {
+            prevPage() {
+                if (this.rawPage <= 0)
+                    return;
+                this.rawPage--;
+            },
+            nextPage() {
+                this.rawPage++;
+            },
+            reload() {
+                // Get computed data
+                const query = {};
+                const page: number = this.page;
+                const size: number = this.size;
+
+                // Fetch data
+                let failed = false;
+                fetch('http://localhost:3002/api/students/?page=' + page + '&size=' + size, {
+                    mode: 'cors',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    method: 'POST',
+                    body: JSON.stringify(query)
+                })
+                    .then(response => {
+                        failed = !response.ok;
+                        return response.json();
+                    })
+                    .then(parsedJSON => {
+                        if (failed)
+                            return alert(parsedJSON.code + ': ' + parsedJSON.message);
+
+                        // Add index field to each item
+                        for (let i = 0; i < parsedJSON.length; i++)
+                            parsedJSON[i].index = i + 1 + page * size;
+
+                        this.studentList = parsedJSON;
+                    })
+                    .catch(error => {
+                        console.log('Error', error);
+                    });
             }
         }
     });
@@ -88,7 +142,7 @@
 
     td[contenteditable="true"]:empty::before {
         content: attr(placeholder);
-        color: gray;
+        color: var(--text-gray-0);
         cursor: text;
         white-space: nowrap;
     }

@@ -32,7 +32,7 @@
         name: 'StudentItem',
         props: ['data'],
         components: {}
-    })
+    });
 </script>
 
 <style scoped>
