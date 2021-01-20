@@ -104,7 +104,10 @@
 
                 // Fetch data
                 let failed = false;
-                fetch('http://localhost:3002/api/students/?page=' + page + '&size=' + size, {
+                const API_URL = process.env.NODE_ENV === 'production'
+                    ? '/api/students/'
+                    : 'http://localhost:3002/api/students/';
+                fetch(API_URL + '?page=' + page + '&size=' + size, {
                     mode: 'cors',
                     headers: {
                         'Accept': 'application/json',
