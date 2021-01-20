@@ -9,12 +9,8 @@
         <td class="text-center">{{ data.placeOfBirth }}</td>
         <td class="text-center">{{ data.ethnic }}</td>
         <td class="text-center">{{ data.nationality }}</td>
-        <td class="img">
-            <img v-bind:src="data.image" alt="" onerror="this.style.display=\'none\'">
-        </td>
-        <td class="img">
-            <img v-bind:src="data.avatar" alt="" onerror="this.style.display=\'none\'">
-        </td>
+        <td class="img no-select"><img v-bind:src="data.image" alt=""></td>
+        <td class="img no-select"><img v-bind:src="data.avatar" alt=""></td>
         <td class="text-center">
             <a v-bind:href="'tel:+84' + data.phone">{{ data.phone }}</a>
         </td>
