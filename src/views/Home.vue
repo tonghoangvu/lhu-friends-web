@@ -68,10 +68,12 @@
 
 <script lang="ts">
     import { defineComponent } from 'vue';
+    import store from '@/store';
     import StudentItem from '../components/StudentItem.vue';
 
     export default defineComponent({
         name: 'Home',
+        store: store,
         components: {
             StudentItem
         },
@@ -126,6 +128,8 @@
                 return query;
             },
             reload() {
+                store.commit('changeLoading', true);
+
                 // Prepare request data
                 const page: number = this.page;
                 const size: number = this.size;
@@ -162,6 +166,9 @@
                     })
                     .catch(error => {
                         alert('Internal error: ' + error.message);
+                    })
+                    .finally(() => {
+                        store.commit('changeLoading', false);
                     });
             }
         }

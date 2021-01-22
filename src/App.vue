@@ -6,7 +6,7 @@
                 <router-link class="tab px1" to="/about">Giới thiệu</router-link>
             </div>
             <div class="flex-row align-center mla">
-                <span class="no-spinner"></span>
+                <span v-bind:class="$store.state.isLoading ? 'spinner' : ''"></span>
                 <button class="m1 ml1 no-wrap">Đăng nhập</button>
             </div>
         </nav>
@@ -23,9 +23,11 @@
 
 <script lang="ts">
     import { defineComponent } from 'vue';
+    import store from './store';
 
     export default defineComponent({
         name: 'App',
+        store: store,
         components: {},
         methods: {
             backToTop() {
