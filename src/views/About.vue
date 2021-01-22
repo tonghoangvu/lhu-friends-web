@@ -1,6 +1,6 @@
 <template>
     <div class="flex-col my2 flex-center no-select">
-        <img src="/img/icon.svg" width="96" alt="">
+        <img src="/img/icon.svg" draggable="false" width="96" alt="">
         <h2 class="text-primary m0">lhu-friends</h2>
         <p class="text-gray">Tiện ích tìm kiếm bạn bè LHU</p>
         <p class="text-center">

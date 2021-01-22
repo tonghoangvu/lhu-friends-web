@@ -9,8 +9,12 @@
         <td class="text-center">{{ student.placeOfBirth }}</td>
         <td class="text-center">{{ student.ethnic }}</td>
         <td class="text-center">{{ student.nationality }}</td>
-        <td class="img no-select"><img v-bind:src="student.image" alt=""></td>
-        <td class="img no-select"><img v-bind:src="student.avatar" alt=""></td>
+        <td class="img no-select">
+            <img v-bind:src="student.image" alt="" draggable="false">
+        </td>
+        <td class="img no-select">
+            <img v-bind:src="student.avatar" alt="" draggable="false">
+        </td>
         <td class="text-center">
             <a v-bind:href="'tel:+84' + student.phone">{{ student.phone }}</a>
         </td>

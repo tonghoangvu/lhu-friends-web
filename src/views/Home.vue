@@ -1,18 +1,19 @@
 <template>
-    <header id="home-top" class="clearfix p1 no-select">
-        <button class="mr05" v-on:click="prevPage">Trước</button>
-        <input type="number" class="number-input mr05" placeholder="Page"
-            v-model.number.lazy="rawPage">
-        <button class="mr05" v-on:click="nextPage">Sau</button>
+    <div id="home-top"></div>
+    <div class="float-left">
+        <header class="p1 clearfix no-select">
+            <button class="mr05" v-on:click="prevPage">Trước</button>
+            <input type="number" class="number-input mr05" placeholder="Page"
+                v-model.number.lazy="rawPage">
+            <button class="mr05" v-on:click="nextPage">Sau</button>
 
-        <input type="number" class="number-input mr05" placeholder="Size"
-            v-model.number.lazy="rawSize">
-        <label>mục mỗi trang</label>
+            <input type="number" class="number-input mr05" placeholder="Size"
+                v-model.number.lazy="rawSize">
+            <label class="mr1">mục mỗi trang</label>
 
-        <button class="float-right" v-on:click="reload">Tải lại</button>
-    </header>
-    <div class="p1 pt0 float-left">
-        <table>
+            <button v-on:click="reload">Tải lại</button>
+        </header>
+        <table class="m1 mt0">
             <thead class="no-select">
                 <tr>
                     <th>STT</th>
