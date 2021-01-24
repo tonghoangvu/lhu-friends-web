@@ -6,12 +6,11 @@
             <input type="number" class="number-input mr05" placeholder="Page"
                 v-model.number.lazy="rawPage">
             <button class="mr05" v-on:click="nextPage">Sau</button>
+            <button class="mr05" v-on:click="reload">Tải lại</button>
 
             <input type="number" class="number-input mr05" placeholder="Size"
                 v-model.number.lazy="rawSize">
-            <label class="mr1">mục mỗi trang</label>
-
-            <button v-on:click="reload">Tải lại</button>
+            <label>mục mỗi trang</label>
         </header>
         <table class="m1 mt0">
             <thead class="no-select">
