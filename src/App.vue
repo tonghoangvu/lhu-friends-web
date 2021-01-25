@@ -48,6 +48,18 @@
     });
 </script>
 
+<style>
+    @import './assets/your-css/colors.css';
+    @import './assets/your-css/default.css';
+    @import './assets/your-css/default-fix.css';
+    @import './assets/your-css/classes.css';
+    @import './assets/your-css/sizes.css';
+    @import './assets/your-css/flex.css';
+    @import './assets/your-css/scrollbar.css';
+    @import './assets/your-css/components.css';
+    @import './assets/your-css/utils.css';
+</style>
+
 <style scoped>
     .stack {
         display: flex;
