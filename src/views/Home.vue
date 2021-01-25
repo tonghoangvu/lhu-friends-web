@@ -2,15 +2,16 @@
     <div id="home-top"></div>
     <div class="float-left">
         <header class="p1 clearfix no-select">
+            <label for="page" class="mr05">Trang</label>
             <button class="mr05" v-on:click="prevPage">Trước</button>
-            <input type="number" class="number-input mr05" placeholder="Page"
+            <input type="number" id="page" class="number-input mr05" placeholder="Page"
                 v-model.number.lazy="rawPage">
             <button class="mr05" v-on:click="nextPage">Sau</button>
             <button class="mr05" v-on:click="reload">Tải lại</button>
 
-            <input type="number" class="number-input mr05" placeholder="Size"
+            <input type="number" id="size" class="number-input mr05" placeholder="Size"
                 v-model.number.lazy="rawSize">
-            <label>mục mỗi trang</label>
+            <label for="size">mục mỗi trang</label>
         </header>
         <table class="m1 mt0">
             <thead class="no-select">
@@ -176,17 +177,6 @@
 </script>
 
 <style scoped>
-    td[contenteditable="true"] {
-        outline: none;
-    }
-
-    td[contenteditable="true"]:empty::before {
-        content: attr(placeholder);
-        color: var(--text-gray-0);
-        cursor: text;
-        white-space: nowrap;
-    }
-
     .number-input {
         width: 6ch;
         text-align: center;

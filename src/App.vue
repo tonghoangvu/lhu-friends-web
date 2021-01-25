@@ -2,10 +2,10 @@
     <main class="flex-col">
         <nav id="nav" class="flex-row flex-wrap bg-0 no-select px1">
             <div class="stack">
-                <router-link class="tab px05" to="/">Tìm kiếm</router-link>
+                <router-link class="tab" to="/">Tìm kiếm</router-link>
             </div>
             <div class="stack">
-                <router-link class="tab px05" to="/about">Giới thiệu</router-link>
+                <router-link class="tab" to="/about">Giới thiệu</router-link>
             </div>
             <div id="nav-last" class="stack py1 mla justify-start">
                 <span class="mr1" v-bind:class="$store.state.isLoading ? 'spinner' : ''"></span>
@@ -19,7 +19,8 @@
                 </keep-alive>
             </router-view>
         </div>
-        <a class="back-to-top" href="#" v-on:click="backToTop"></a>
+        <a class="back-to-top" href="#" aria-label="Back to top"
+            v-on:click="backToTop"></a>
     </main>
 </template>
 
@@ -61,6 +62,8 @@
         align-items: center;  /* Center text inside a */
         margin-top: 0.5rem;
         margin-bottom: unset;  /* Override */
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
         color: var(--text-color-0);
         border-bottom: var(--bold-thickness) solid transparent;
     }

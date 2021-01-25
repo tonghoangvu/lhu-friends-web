@@ -166,6 +166,17 @@ tbody > tr:nth-child(odd) {
     background-color: var(--background-color-2);
 }
 
+td[contenteditable="true"] {
+    outline: none;
+}
+
+td[contenteditable="true"]:empty::before {
+    content: attr(placeholder);
+    color: var(--text-gray-0);
+    cursor: text;
+    white-space: nowrap;
+}
+
 /* DETAILS & SUMMARY */
 
 details {

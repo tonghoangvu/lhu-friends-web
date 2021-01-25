@@ -23,7 +23,13 @@
     border-radius: 50%;
     border: var(--bold-thickness) solid var(--background-color-2);
     border-top: var(--bold-thickness) solid var(--primary-color-0);
-    animation: spin var(--fast-animation-duration) linear infinite;
+    -webkit-animation: spin var(--fast-animation-duration) linear infinite;
+            animation: spin var(--fast-animation-duration) linear infinite;
+}
+
+@-webkit-keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 @keyframes spin {

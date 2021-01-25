@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="vi-VN">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>lhu-friends</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tiện ích tìm kiếm bạn bè LHU">
 
     <link rel="stylesheet" href="<%= BASE_URL %>your-css/colors.css">
     <link rel="stylesheet" href="<%= BASE_URL %>your-css/default.css">
@@ -20,16 +20,12 @@
     <script>
         loadConfig(defaultConfig);
         loadConfig(baseTheme);
+        reloadTheme();
+        setSystemThemeListener(reloadTheme);
 
-        // Initial theme
-        reloadTheme(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
-
-        // Track system theme changes
-        window.matchMedia('(prefers-color-scheme: dark)')
-                .addEventListener('change', event => reloadTheme(event.matches));
-
-        function reloadTheme(isDark) {
-            loadConfig(isDark ? darkTheme : lightTheme);
+        function reloadTheme() {
+            // Use system theme
+            loadConfig(isSystemThemeDark() ? darkTheme : lightTheme);
         }
     </script>
 </head>

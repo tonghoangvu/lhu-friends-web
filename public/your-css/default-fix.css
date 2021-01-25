@@ -1,8 +1,8 @@
-::selection {
+::-moz-selection {
     background-color: var(--primary-transparent-1);
 }
 
-::-moz-selection {
+::selection {
     background-color: var(--primary-transparent-1);
 }
 
@@ -20,7 +20,8 @@
 }
 
 input[type="number"]::-webkit-inner-spin-button {
-    appearance: none;
+    -webkit-appearance: none;
+            appearance: none;
 }
 
 input[type="time"]::-webkit-calendar-picker-indicator,
@@ -28,5 +29,6 @@ input[type="date"]::-webkit-calendar-picker-indicator,
 input[type="datetime-local"]::-webkit-calendar-picker-indicator,
 input[type="week"]::-webkit-calendar-picker-indicator,
 input[type="month"]::-webkit-calendar-picker-indicator {
-    filter: invert(0.5);
+    -webkit-filter: invert(0.5);
+            filter: invert(0.5);
 }

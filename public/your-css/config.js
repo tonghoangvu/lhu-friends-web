@@ -134,3 +134,12 @@ function modifyConfig(config, modConfig) {
     for (const prop in modConfig)
         config[prop] = modConfig[prop];
 }
+
+function isSystemThemeDark() {
+    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+}
+
+function setSystemThemeListener(reloadFunction) {
+    window.matchMedia('(prefers-color-scheme: dark)')
+        .addEventListener('change', reloadFunction);
+}
