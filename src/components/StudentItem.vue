@@ -10,10 +10,10 @@
         <td class="text-center">{{ student.ethnic }}</td>
         <td class="text-center">{{ student.nationality }}</td>
         <td class="img no-select">
-            <img v-bind:src="student.image" alt="Ảnh cá nhân" draggable="false">
+            <img v-bind:src="student.image" alt="" draggable="false">
         </td>
         <td class="img no-select">
-            <img v-bind:src="student.avatar" alt="Ảnh đại diện" draggable="false">
+            <img v-bind:src="student.avatar" alt="" draggable="false">
         </td>
         <td class="text-center">
             <a v-bind:href="'tel:+84' + student.phone">{{ student.phone }}</a>

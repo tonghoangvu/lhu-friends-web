@@ -1,7 +1,7 @@
 <template>
     <div id="home-top"></div>
     <div class="float-left">
-        <header class="p1 clearfix no-select">
+        <header class="p1 no-select">
             <label for="page" class="mr05">Trang</label>
             <button class="mr05" v-on:click="prevPage">Trước</button>
             <input type="number" id="page" class="number-input mr05" placeholder="Page"
@@ -128,8 +128,11 @@
                 }
                 return query;
             },
+            changeLoading(isLoading: boolean) {
+                store.commit('changeLoading', isLoading);
+            },
             reload() {
-                store.commit('changeLoading', true);
+                this.changeLoading(true);
 
                 // Prepare request data
                 const page: number = this.page;
@@ -169,7 +172,7 @@
                         alert('Internal error: ' + error.message);
                     })
                     .finally(() => {
-                        store.commit('changeLoading', false);
+                        this.changeLoading(false);
                     });
             }
         }
