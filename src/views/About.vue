@@ -2,7 +2,9 @@
     <div class="flex-col my2 flex-center no-select">
         <img src="/img/icon.svg" draggable="false" width="96" alt="lhu-friends logo">
         <h2 class="text-primary m0">lhu-friends</h2>
-        <p class="text-gray">Tiện ích tìm kiếm bạn bè LHU</p>
+        <p class="text-gray text-center">
+            Tiện ích tìm kiếm bạn bè LHU
+        </p>
         <p class="text-center">
             <a href="https://github.com/tonghoangvu/lhu-friends-web"
                 target="_blank" rel="noreferrer">
