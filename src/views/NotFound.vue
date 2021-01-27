@@ -18,13 +18,10 @@
     import { defineComponent } from 'vue';
 
     export default defineComponent({
-        name: 'NotFound',
-        components: {}
+        name: 'NotFound'
     });
 </script>
 
 <style scoped>
-    a.fix:hover {
-        border: unset;
-    }
+    a.fix:hover { border: unset; }
 </style>

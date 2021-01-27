@@ -36,8 +36,7 @@
         name: 'StudentItem',
         props: {
             student: Object
-        },
-        components: {}
+        }
     });
 </script>
 

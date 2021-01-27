@@ -1,15 +1,14 @@
 <template>
-    <div id="home-top"></div>
     <div class="float-left">
         <header class="p1 no-select">
             <label for="page" class="mr05">Trang</label>
             <button class="mr05" v-on:click="prevPage">Trước</button>
-            <input type="number" id="page" class="number-input mr05" placeholder="Page"
+            <input type="number" id="page" class="mr05" placeholder="Page"
                 v-model.number.lazy="rawPage">
             <button class="mr05" v-on:click="nextPage">Sau</button>
-            <button class="mr05" v-on:click="reload">Tải lại</button>
 
-            <input type="number" id="size" class="number-input mr05" placeholder="Size"
+            <button class="mr05" v-on:click="reload">Tải lại</button>
+            <input type="number" id="size" class="mr05" placeholder="Size"
                 v-model.number.lazy="rawSize">
             <label for="size">mục mỗi trang</label>
         </header>
@@ -160,7 +159,7 @@
                     })
                     .then(parsedJSON => {
                         if (failed)
-                            return alert('Error ' + parsedJSON.code + ': ' + parsedJSON.message);
+                            return alert(parsedJSON.message);
 
                         // Add index field to each item
                         for (let i = 0; i < parsedJSON.length; i++)
@@ -169,7 +168,7 @@
                         this.studentList = parsedJSON;
                     })
                     .catch(error => {
-                        alert('Internal error: ' + error.message);
+                        alert('Không thể kết nối tới server');
                     })
                     .finally(() => {
                         this.changeLoading(false);
@@ -180,7 +179,7 @@
 </script>
 
 <style scoped>
-    .number-input {
+    input[type="number"] {
         width: 6ch;
         text-align: center;
     }
