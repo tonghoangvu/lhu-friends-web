@@ -5,19 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Tiện ích tìm kiếm bạn bè LHU">
     <title>lhu-friends</title>
-
-    <script src="<%= BASE_URL %>your-css/config.js"></script>
-    <script>
-        loadConfig(defaultConfig);
-        loadConfig(baseTheme);
-        reloadTheme();
-        setSystemThemeListener(reloadTheme);
-
-        function reloadTheme() {
-            // Use system theme
-            loadConfig(isSystemThemeDark() ? darkTheme : lightTheme);
-        }
-    </script>
 </head>
 <body class="bg-1">
     <noscript>

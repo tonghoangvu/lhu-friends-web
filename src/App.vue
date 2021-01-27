@@ -27,6 +27,10 @@
 <script lang="ts">
     import { defineComponent } from 'vue';
     import store from './store';
+    import {
+        defaultConfig, baseTheme, lightTheme, darkTheme,
+        loadConfig, isSystemThemeDark, setSystemThemeListener
+    } from './assets/your-css/config';
 
     export default defineComponent({
         name: 'App',
@@ -43,7 +47,17 @@
                     return;
                 const topPos: number = navLastElem.getBoundingClientRect().top + window.scrollY;
                 navElem.style.marginTop = (-topPos).toString() + 'px';
+            },
+            reloadTheme() {
+                // Use system theme
+                loadConfig(isSystemThemeDark() ? darkTheme : lightTheme);
             }
+        },
+        mounted() {
+            loadConfig(defaultConfig);
+            loadConfig(baseTheme);
+            this.reloadTheme();
+            setSystemThemeListener(this.reloadTheme);
         }
     });
 </script>
