@@ -13,33 +13,31 @@
             </div>
         </nav>
         <div id="content" class="flex-autosize">
-            <div id="home-top"></div>  <!-- Scroll to here -->
+            <div id="main-top"></div>  <!-- Scroll to here -->
             <router-view v-slot="{ Component }">
                 <keep-alive>
                     <component v-bind:is="Component"/>
                 </keep-alive>
             </router-view>
         </div>
-        <a class="back-to-top" href="#" aria-label="Back to top"
-            v-on:click="backToTop"></a>
+        <a class="back-to-top" href="#" aria-label="Back to top" v-on:click="backToTop"></a>
     </main>
 </template>
 
 <script lang="ts">
     import { defineComponent } from 'vue';
-    import store from './store';
+    import store from '@/store';
     import {
         defaultConfig, baseTheme, lightTheme, darkTheme,
         loadConfig, isSystemThemeDark, setSystemThemeListener
-    } from './assets/your-css/config';
+    } from '@/assets/your-css/config';
 
     export default defineComponent({
         name: 'App',
         store: store,
-        components: {},
         methods: {
             backToTop() {
-                document.getElementById('home-top')?.scrollIntoView();
+                document.getElementById('main-top')?.scrollIntoView();
             },
             toggleMenu() {
                 const navElem = document.getElementById('nav');
@@ -63,18 +61,6 @@
     });
 </script>
 
-<style>
-    @import './assets/your-css/colors.css';
-    @import './assets/your-css/default.css';
-    @import './assets/your-css/default-fix.css';
-    @import './assets/your-css/classes.css';
-    @import './assets/your-css/sizes.css';
-    @import './assets/your-css/flex.css';
-    @import './assets/your-css/scrollbar.css';
-    @import './assets/your-css/components.css';
-    @import './assets/your-css/utils.css';
-</style>
-
 <style scoped>
     .stack {
         display: flex;
@@ -84,9 +70,9 @@
 
     .tab {
         display: flex;
+        align-items: center;  /* Center text inside a */
         width: 100%;
         min-height: 2.4rem;
-        align-items: center;  /* Center text inside a */
         margin-top: 0.5rem;
         padding-left: 0.75rem;
         padding-right: 0.75rem;
@@ -99,17 +85,8 @@
         border-bottom: var(--bold-thickness) solid var(--primary-color-0);
     }
 
-    main {
-        height: 100vh;
-        min-height: 100vh;
-    }
-
     #nav {
         transition: margin-top 0.4s ease-in-out;
-    }
-
-    #content {
-        overflow: auto;
     }
 
     @media screen and (min-width: 350px) {
@@ -117,4 +94,25 @@
         .tab { margin-top: unset; }
         #nav { margin-top: 0px !important; }
     }
+
+    main {
+        height: 100vh;
+        min-height: 100vh;
+    }
+
+    #content {
+        overflow: auto;
+    }
+</style>
+
+<style>
+    @import './assets/your-css/colors.css';
+    @import './assets/your-css/default.css';
+    @import './assets/your-css/default-fix.css';
+    @import './assets/your-css/classes.css';
+    @import './assets/your-css/sizes.css';
+    @import './assets/your-css/flex.css';
+    @import './assets/your-css/scrollbar.css';
+    @import './assets/your-css/components.css';
+    @import './assets/your-css/utils.css';
 </style>

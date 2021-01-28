@@ -1,11 +1,9 @@
 <template>
-    <div class="flex-col my2 flex-center no-select">
-        <img src="/img/icon.svg" draggable="false" width="96" alt="lhu-friends logo">
+    <div class="p1 flex-col flex-center no-select text-center">
+        <img src="/img/icon.svg" draggable="false" width="96" alt="Logo">
         <h2 class="text-primary m0">lhu-friends</h2>
-        <p class="text-gray text-center">
-            Tiện ích tìm kiếm bạn bè LHU
-        </p>
-        <p class="text-center">
+        <p class="text-gray">Tiện ích tìm kiếm bạn bè LHU</p>
+        <p>
             <a href="https://github.com/tonghoangvu/lhu-friends-web"
                 target="_blank" rel="noreferrer">
                 GitHub project
