@@ -7,6 +7,9 @@
             <div class="stack">
                 <router-link class="tab" to="/about">Giới thiệu</router-link>
             </div>
+            <div class="stack">
+                <router-link class="tab" to="/settings">Cài đặt</router-link>
+            </div>
             <div id="nav-last" class="stack py1 mla">
                 <span class="mr1" v-bind:class="$store.state.isLoading ? 'spinner' : ''"></span>
                 <button class="mla" v-on:click="toggleMenu">Menu</button>
@@ -48,14 +51,30 @@
                 navElem.style.marginTop = (-topPos).toString() + 'px';
             },
             reloadTheme() {
-                // Use system theme
-                loadConfig(isSystemThemeDark() ? darkTheme : lightTheme);
+                const theme = store.state.theme;
+                let themeConfig;
+                if (theme === 'light')
+                    themeConfig = lightTheme;
+                else if (theme === 'dark')
+                    themeConfig = darkTheme;
+                else
+                    themeConfig = isSystemThemeDark() ? darkTheme : lightTheme;
+                loadConfig(themeConfig);
+            }
+        },
+        watch: {
+            '$store.state.theme'() {
+                this.reloadTheme();
             }
         },
         mounted() {
             loadConfig(defaultConfig);
             loadConfig(baseTheme);
-            this.reloadTheme();
+
+            // Load previous theme (in localStorage) and update UI (by watch)
+            store.commit('changeTheme', localStorage.getItem('theme') || 'system');
+
+            // Track OS theme change anytime
             setSystemThemeListener(this.reloadTheme);
         }
     });
@@ -89,7 +108,7 @@
         transition: margin-top 0.4s ease-in-out;
     }
 
-    @media screen and (min-width: 350px) {
+    @media screen and (min-width: 420px) {
         .stack { width: unset; }
         .tab { margin-top: unset; }
         #nav { margin-top: 0px !important; }
