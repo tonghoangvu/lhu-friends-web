@@ -10,7 +10,7 @@ module.exports = {
         manifestOptions: {
             short_name: 'lhu-friends',
             start_url: '/',
-            background_color: '#fafafa',
+            background_color: '#fafafa'
         }
     }
 };

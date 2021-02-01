@@ -44,7 +44,7 @@ const baseTheme: Record<string, string | number> = {
     '--primary-transparent-1': 'rgba(var(--base-color-0), 0.5)',
     '--primary-transparent-2': 'rgba(var(--base-color-0), 0.25)',
 
-    '--text-color-on-solid': 'white',
+    '--text-color-on-solid': 'white'
 };
 
 const lightTheme: Record<string, string | number> = {
@@ -129,7 +129,7 @@ function setPrimaryColor(themeConfig: Record<string, string | number>, primaryCo
     modifyConfig(themeConfig, {
         '--base-color-0': 'var(--' + primaryColor + '-500)',
         '--base-color-1': 'var(--' + primaryColor + '-600)',
-        '--base-color-2': 'var(--' + primaryColor + '-700)',
+        '--base-color-2': 'var(--' + primaryColor + '-700)'
     });
 }
 
