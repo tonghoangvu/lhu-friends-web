@@ -12,7 +12,7 @@
             </div>
             <div id="nav-last" class="stack py1 mla">
                 <span class="mr1" v-bind:class="$store.state.isLoading ? 'spinner' : ''"></span>
-                <button class="mla" v-on:click="toggleMenu">Menu</button>
+                <button class="mla" v-on:click="toggleMenu" autofocus>Menu</button>
             </div>
         </nav>
         <div id="content" class="flex-autosize">
@@ -76,6 +76,9 @@
 
             // Track OS theme change anytime
             setSystemThemeListener(this.reloadTheme);
+
+            // Collapse menu on mobile
+            this.toggleMenu();
         }
     });
 </script>
