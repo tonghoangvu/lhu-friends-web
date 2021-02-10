@@ -120,9 +120,19 @@
                     'facebook'
                 ];
                 for (const field of FILTER_FIELDS) {
-                    const fieldValue = document.getElementById(field)?.innerText;
-                    if (fieldValue)
-                        query[field] = fieldValue;
+                    const FILTER_ELEMENT = document.getElementById(field);
+                    if (!FILTER_ELEMENT)
+                        continue;
+
+                    const fieldValue = FILTER_ELEMENT.innerText;
+                    if (fieldValue) {
+                        query[field] = fieldValue
+                            .replaceAll(/\n|\r/g, ' ')  // Trim line ending
+                            .replaceAll(/\s\s+/g, ' ')  // Trim multiple spaces
+                            .trim();
+                        if (!query[field])
+                            FILTER_ELEMENT.innerText = '';
+                    }
                 }
                 return query;
             },
@@ -134,6 +144,7 @@
                 const size: number = this.size;
                 const params = '?' + ['page=' + page, 'size=' + size].join('&');
                 const query = this.buildQuery();
+                alert(JSON.stringify(query, null, 4));
                 const API_URL = process.env.NODE_ENV === 'production'
                     ? '/api/students/'
                     : 'http://localhost:3002/api/students/';
