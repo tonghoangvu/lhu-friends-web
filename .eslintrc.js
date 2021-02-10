@@ -48,7 +48,6 @@ module.exports = {
         'prefer-const': ['warn'],
         'no-multiple-empty-lines': ['warn'],
         'space-in-parens': ['warn'],
-        'no-multi-spaces': ['warn'],
         'no-use-before-define': ['error']
     },
     'overrides': [

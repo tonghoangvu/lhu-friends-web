@@ -144,7 +144,6 @@
                 const size: number = this.size;
                 const params = '?' + ['page=' + page, 'size=' + size].join('&');
                 const query = this.buildQuery();
-                alert(JSON.stringify(query, null, 4));
                 const API_URL = process.env.NODE_ENV === 'production'
                     ? '/api/students/'
                     : 'http://localhost:3002/api/students/';
