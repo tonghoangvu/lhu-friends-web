@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 
-import Home from './views/Home.vue';
-import About from './views/About.vue';
-import Settings from './views/Settings.vue';
+import Home from '@/views/Home.vue';
+import About from '@/views/About.vue';
+import Settings from '@/views/Settings.vue';
 
 const routes: Array<RouteRecordRaw> = [
     {
@@ -23,7 +23,7 @@ const routes: Array<RouteRecordRaw> = [
     {
         path: '/:pathMatch(.*)*',
         name: 'NotFound',
-        component: () => import('./views/NotFound.vue')
+        component: () => import('@/views/NotFound.vue')
     }
 ];
 
