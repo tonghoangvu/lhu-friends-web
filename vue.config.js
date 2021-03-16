@@ -3,6 +3,7 @@
 
 module.exports = {
     lintOnSave: false,
+    productionSourceMap: false,
     pwa: {
         name: 'LHU friends',
         themeColor: '#0d6efd',
