@@ -2,10 +2,15 @@
     "compilerOptions": {
         "target": "es6",
         "module": "esnext",
+        "moduleResolution": "node",
+        "declaration": true,
+        "alwaysStrict": true,
         "strict": true,
+        "strictNullChecks": true,
+        "noImplicitAny": true,
+        "noImplicitThis": true,
         "jsx": "preserve",
         "importHelpers": true,
-        "moduleResolution": "node",
         "skipLibCheck": true,
         "esModuleInterop": true,
         "allowSyntheticDefaultImports": true,
@@ -32,7 +37,7 @@
         "src/**/*.vue",
         "tests/**/*.ts",
         "tests/**/*.tsx"
-, "src/assets/your-css/config.js"    ],
+    ],
     "exclude": [
         "node_modules"
     ]

@@ -29,9 +29,9 @@
         computed: {
             selectedIndex() {
                 const theme = store.state.theme;
-                if (theme == 'light')
+                if (theme === 'light')
                     return 1;
-                else if (theme == 'dark')
+                else if (theme === 'dark')
                     return 2;
                 else
                     return 0;

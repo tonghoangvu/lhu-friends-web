@@ -1,17 +1,16 @@
 {
     "name": "lhu-friends-web",
-    "version": "1.0.0",
+    "version": "1.2.0",
     "description": "Trang web SPA cho tiện ích tìm kiếm bạn bè LHU",
-    "main": "src/main.ts",
     "repository": "https://github.com/tonghoangvu/lhu-friends-web.git",
     "author": "tonghoangvu <tonghoangvu@outlook.com>",
     "license": "MIT",
-    "private": false,
     "scripts": {
         "serve": "vue-cli-service serve",
         "build": "vue-cli-service build",
         "lint": "vue-cli-service lint --no-fix",
-        "lint-fix": "vue-cli-service lint"
+        "lint:fix": "vue-cli-service lint",
+        "generate-icons": "vue-asset-generate -a ./public/img/icon.svg -o ./public/img/icons --no-manifest"
     },
     "dependencies": {
         "register-service-worker": "^1.7.1",
@@ -34,14 +33,5 @@
         "eslint-plugin-vue": "^7.0.0-0",
         "lint-staged": "^9.5.0",
         "typescript": "~3.9.3"
-    },
-    "gitHooks": {
-        "pre-commit": "lint-staged"
-    },
-    "lint-staged": {
-        "*.{js,jsx,vue,ts,tsx}": [
-            "vue-cli-service lint --no-fix",
-            "git add"
-        ]
     }
 }

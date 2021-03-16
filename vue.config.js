@@ -8,7 +8,7 @@ module.exports = {
         themeColor: '#0d6efd',
         msTileColor: '#0d6efd',
         manifestOptions: {
-            short_name: 'lhu-friends',
+            short_name: 'LHU friends',
             start_url: '/',
             background_color: '#fafafa'
         }
