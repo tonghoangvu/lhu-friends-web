@@ -1,9 +1,16 @@
 {
     "name": "lhu-friends-web",
-    "version": "1.2.0",
+    "version": "2.0.0",
     "description": "Trang web SPA cho tiện ích tìm kiếm bạn bè LHU",
-    "repository": "https://github.com/tonghoangvu/lhu-friends-web.git",
-    "author": "tonghoangvu <tonghoangvu@outlook.com>",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/tonghoangvu/lhu-friends-web.git"
+    },
+    "author": {
+        "name": "Tong Hoang Vu",
+        "email": "tonghoangvu@outlook.com",
+        "url": "https://github.com/tonghoangvu"
+    },
     "license": "MIT",
     "scripts": {
         "serve": "vue-cli-service serve",
