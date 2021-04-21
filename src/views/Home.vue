@@ -38,7 +38,7 @@
                         v-on:keypress.enter.prevent="reload()"></td>
                     <td contenteditable="true" placeholder="Regex" id="classId"
                         v-on:keypress.enter.prevent="reload()"></td>
-                    <td contenteditable="true" placeholder="Match" id="gender"
+                    <td contenteditable="true" placeholder="Regex" id="gender"
                         v-on:keypress.enter.prevent="reload()"></td>
                     <td contenteditable="true" placeholder="Regex" id="birthday"
                         v-on:keypress.enter.prevent="reload()"></td>
