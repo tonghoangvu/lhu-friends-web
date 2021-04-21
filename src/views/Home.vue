@@ -8,6 +8,7 @@
             <button class="mr05" v-on:click="nextPage">Sau</button>
 
             <button class="mr05" v-on:click="reload">Tải lại</button>
+            <button class="mr05" v-on:click="random">Random</button>
             <input type="number" id="size" class="mr05" placeholder="Size"
                 v-model.number.lazy="rawSize">
             <label for="size">mục mỗi trang</label>
@@ -126,59 +127,78 @@
 
                     const fieldValue = FILTER_ELEMENT.innerText;
                     if (fieldValue) {
-                        query[field] = fieldValue
+                        const formattedValue = fieldValue
                             .replaceAll(/\n|\r/g, ' ')  // Trim line ending
                             .replaceAll(/\s\s+/g, ' ')  // Trim multiple spaces
                             .trim();
-                        if (!query[field])
+                        if (!formattedValue)
                             FILTER_ELEMENT.innerText = '';
+                        query[field] = formattedValue;
                     }
                 }
                 return query;
             },
-            reload() {
-                this.changeLoading(true);
-
+            async fetchFilteredData(apiUrl: string, params: string) {
+                let failed = false;
+                return await fetch(apiUrl + params, {
+                    mode: 'cors',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    method: 'POST',
+                    body: JSON.stringify(this.buildQuery())
+                }).then(response => {
+                    failed = !response.ok;
+                    return response.json();
+                }).then(parsedJson => {
+                    if (failed)
+                        throw new Error(parsedJson.message);
+                    return parsedJson;
+                });
+            },
+            async reload() {
                 // Prepare request data
                 const page: number = this.page;
                 const size: number = this.size;
                 const params = '?' + ['page=' + page, 'size=' + size].join('&');
-                const query = this.buildQuery();
                 const API_URL = process.env.NODE_ENV === 'production'
                     ? '/api/students/'
                     : 'http://localhost:3002/api/students/';
 
                 // Fetch API
-                let failed = false;
-                fetch(API_URL + params, {
-                    mode: 'cors',
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json'
-                    },
-                    method: 'POST',
-                    body: JSON.stringify(query)
-                })
-                    .then(response => {
-                        failed = !response.ok;
-                        return response.json();
-                    })
-                    .then(parsedJSON => {
-                        if (failed)
-                            return alert(parsedJSON.message);
+                this.changeLoading(true);
+                try {
+                    const parsedJson = await this.fetchFilteredData(API_URL, params);
+                    for (let i = 0; i < parsedJson.length; i++)
+                        parsedJson[i].index = i + 1 + page * size;
+                    this.studentList = parsedJson;
+                } catch (e) {
+                    alert(`Không thể kết nối tới server\n${ e }`);
+                    console.log(e);
+                } finally {
+                    this.changeLoading(false);
+                }
+            },
+            async random() {
+                const size: number = this.size;
+                const params = '?' + ['size=' + size].join('&');
+                const API_URL = process.env.NODE_ENV === 'production'
+                    ? '/api/students/random'
+                    : 'http://localhost:3002/api/students/random';
 
-                        // Add index field to each item
-                        for (let i = 0; i < parsedJSON.length; i++)
-                            parsedJSON[i].index = i + 1 + page * size;
-
-                        this.studentList = parsedJSON;
-                    })
-                    .catch(() => {
-                        alert('Không thể kết nối tới server');
-                    })
-                    .finally(() => {
-                        this.changeLoading(false);
-                    });
+                // Fetch API
+                this.changeLoading(true);
+                try {
+                    const parsedJson = await this.fetchFilteredData(API_URL, params);
+                    for (let i = 0; i < parsedJson.length; i++)
+                        parsedJson[i].index = i;
+                    this.studentList = parsedJson;
+                } catch (e) {
+                    alert(`Không thể kết nối tới server\n${ e }`);
+                    console.log(e);
+                } finally {
+                    this.changeLoading(false);
+                }
             }
         }
     });
