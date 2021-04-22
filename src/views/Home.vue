@@ -4,13 +4,15 @@
             <label for="page" class="mr05">Trang</label>
             <button class="mr05" v-on:click="prevPage">Trước</button>
             <input type="number" id="page" class="mr05" placeholder="Page"
-                v-bind:value="page" v-on:keypress.enter="changePage($event.target.value)">
+                v-bind:value="$store.state.page"
+                v-on:keypress.enter="changePage($event.target.value)">
             <button class="mr05" v-on:click="nextPage">Sau</button>
 
             <button class="mr05" v-on:click="reload">Tải lại</button>
             <button class="mr05" v-on:click="random">Random</button>
             <input type="number" id="size" class="mr05" placeholder="Size"
-                v-bind:value="size" v-on:keypress.enter="changeSize($event.target.value)">
+                v-bind:value="$store.state.size"
+                v-on:keypress.enter="changeSize($event.target.value)">
 
             <label for="size">mục mỗi trang</label>
         </header>
@@ -43,33 +45,31 @@
         },
         data() {
             return {
-                page: 0 as number,
-                size: 10 as number,
                 studentList: []
             };
         },
         watch: {
-            page() {
+            '$store.state.page'() {
                 this.reload();
             },
-            size() {
+            '$store.state.size'() {
                 this.reload();
             }
         },
         methods: {
             changePage(page: number) {
                 if (page >= 0)
-                    this.page = page;
+                    store.commit('changePage', page);
             },
             changeSize(size: number) {
                 if (size >= 1)
-                    this.size = size;
+                    store.commit('changeSize', size);
             },
             prevPage() {
-                this.changePage(this.page - 1);
+                this.changePage(store.state.page - 1);
             },
             nextPage() {
-                this.changePage(this.page + 1);
+                this.changePage(store.state.page + 1);
             },
             changeLoading(isLoading: boolean) {
                 store.commit('changeLoading', isLoading);
@@ -119,8 +119,8 @@
             },
             async reload() {
                 // Prepare request data
-                const page: number = this.page;
-                const size: number = this.size;
+                const page: number = store.state.page;
+                const size: number = store.state.size;
                 const params = '?' + ['page=' + page, 'size=' + size].join('&');
                 const API_URL = process.env.NODE_ENV === 'production'
                     ? '/api/students/'
@@ -141,7 +141,7 @@
                 }
             },
             async random() {
-                const size: number = this.size;
+                const size: number = store.state.size;
                 const params = '?' + ['size=' + size].join('&');
                 const API_URL = process.env.NODE_ENV === 'production'
                     ? '/api/students/random'
