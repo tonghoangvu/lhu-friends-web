@@ -1,21 +1,6 @@
 <template>
     <div class="float-left">
-        <header class="p1 no-select">
-            <label for="page" class="mr05">Trang</label>
-            <button class="mr05" v-on:click="prevPage">Trước</button>
-            <input type="number" id="page" class="mr05" placeholder="Page"
-                v-bind:value="$store.state.page"
-                v-on:keypress.enter="changePage($event.target.value)">
-            <button class="mr05" v-on:click="nextPage">Sau</button>
-
-            <button class="mr05" v-on:click="reload">Tải lại</button>
-            <button class="mr05" v-on:click="random">Random</button>
-            <input type="number" id="size" class="mr05" placeholder="Size"
-                v-bind:value="$store.state.size"
-                v-on:keypress.enter="changeSize($event.target.value)">
-
-            <label for="size">mục mỗi trang</label>
-        </header>
+        <ActionBar v-on:reload="loadStudents" v-on:random="randomStudents"/>
         <table class="m1 mt0">
             <thead class="no-select">
                 <HeaderRow/>
@@ -33,6 +18,7 @@
     import { defineComponent } from 'vue';
     import store from '@/store';
 
+    import ActionBar from '@/components/Home.ActionBar.vue';
     import HeaderRow from '@/components/Home.HeaderRow.vue';
     import FilterRow from '@/components/Home.FilterRow.vue';
     import StudentItem from '@/components/StudentItem.vue';
@@ -41,7 +27,7 @@
         name: 'Home',
         store: store,
         components: {
-            HeaderRow, FilterRow, StudentItem
+            ActionBar, HeaderRow, FilterRow, StudentItem
         },
         data() {
             return {
@@ -50,37 +36,24 @@
         },
         watch: {
             '$store.state.page'() {
-                this.reload();
+                this.loadStudents();
             },
             '$store.state.size'() {
-                this.reload();
+                this.loadStudents();
             }
         },
         methods: {
-            changePage(page: number) {
-                if (page >= 0)
-                    store.commit('changePage', page);
-            },
-            changeSize(size: number) {
-                if (size >= 1)
-                    store.commit('changeSize', size);
-            },
-            prevPage() {
-                this.changePage(store.state.page - 1);
-            },
-            nextPage() {
-                this.changePage(store.state.page + 1);
-            },
             changeLoading(isLoading: boolean) {
                 store.commit('changeLoading', isLoading);
             },
             buildQuery(): Record<string, string> {
-                const query: Record<string, string> = {};
                 const FILTER_FIELDS: string[] = [
                     'studentId', 'fullName', 'classId', 'gender', 'birthday',
                     'placeOfBirth', 'ethnic', 'nationality', 'phone', 'email',
                     'facebook'
                 ];
+
+                const query: Record<string, string> = {};
                 for (const field of FILTER_FIELDS) {
                     const FILTER_ELEMENT = document.getElementById(field);
                     if (!FILTER_ELEMENT)
@@ -99,7 +72,7 @@
                 }
                 return query;
             },
-            async fetchFilteredData(apiUrl: string, params: string) {
+            async fetchData(apiUrl: string, params: string) {
                 let failed = false;
                 return await fetch(apiUrl + params, {
                     mode: 'cors',
@@ -117,57 +90,35 @@
                     return parsedJson;
                 });
             },
-            async reload() {
-                // Prepare request data
-                const page: number = store.state.page;
-                const size: number = store.state.size;
-                const params = '?' + ['page=' + page, 'size=' + size].join('&');
-                const API_URL = process.env.NODE_ENV === 'production'
-                    ? '/api/students/'
-                    : 'http://localhost:3002/api/students/';
-
-                // Fetch API
+            async loadData(apiUrl: string, params: string, startIndex: number) {
                 this.changeLoading(true);
                 try {
-                    const parsedJson = await this.fetchFilteredData(API_URL, params);
+                    const parsedJson = await this.fetchData(apiUrl, params);
                     for (let i = 0; i < parsedJson.length; i++)
-                        parsedJson[i].index = i + 1 + page * size;
+                        parsedJson[i].index = startIndex + i + 1;
                     this.studentList = parsedJson;
                 } catch (e) {
-                    alert(`Không thể kết nối tới server\n${ e }`);
-                    console.log(e);
+                    alert('Không thể kết nối tới server');
+                    console.error(e);
                 } finally {
                     this.changeLoading(false);
                 }
             },
-            async random() {
-                const size: number = store.state.size;
-                const params = '?' + ['size=' + size].join('&');
+            async loadStudents() {
+                const API_URL = process.env.NODE_ENV === 'production'
+                    ? '/api/students/'
+                    : 'http://localhost:3002/api/students/';
+                const params = `?page=${ store.state.page }&size=${ store.state.size }`;
+                const startIndex = store.state.page * store.state.size;
+                this.loadData(API_URL, params, startIndex);
+            },
+            async randomStudents() {
                 const API_URL = process.env.NODE_ENV === 'production'
                     ? '/api/students/random'
                     : 'http://localhost:3002/api/students/random';
-
-                // Fetch API
-                this.changeLoading(true);
-                try {
-                    const parsedJson = await this.fetchFilteredData(API_URL, params);
-                    for (let i = 0; i < parsedJson.length; i++)
-                        parsedJson[i].index = i;
-                    this.studentList = parsedJson;
-                } catch (e) {
-                    alert(`Không thể kết nối tới server\n${ e }`);
-                    console.log(e);
-                } finally {
-                    this.changeLoading(false);
-                }
+                const params = `?size=${ store.state.size }`;
+                this.loadData(API_URL, params, 0);
             }
         }
     });
 </script>
-
-<style scoped>
-    input[type="number"] {
-        width: 6ch;
-        text-align: center;
-    }
-</style>
