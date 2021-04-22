@@ -4,13 +4,14 @@
             <label for="page" class="mr05">Trang</label>
             <button class="mr05" v-on:click="prevPage">Trước</button>
             <input type="number" id="page" class="mr05" placeholder="Page"
-                v-model.number.lazy="rawPage">
+                v-bind:value="page" v-on:keypress.enter="changePage($event.target.value)">
             <button class="mr05" v-on:click="nextPage">Sau</button>
 
             <button class="mr05" v-on:click="reload">Tải lại</button>
             <button class="mr05" v-on:click="random">Random</button>
             <input type="number" id="size" class="mr05" placeholder="Size"
-                v-model.number.lazy="rawSize">
+                v-bind:value="size" v-on:keypress.enter="changeSize($event.target.value)">
+
             <label for="size">mục mỗi trang</label>
         </header>
         <table class="m1 mt0">
@@ -42,18 +43,10 @@
         },
         data() {
             return {
-                rawPage: 0 as number,
-                rawSize: 10 as number,
+                page: 0 as number,
+                size: 10 as number,
                 studentList: []
             };
-        },
-        computed: {
-            page(): number {
-                return this.rawPage >= 0 ? this.rawPage : 0;
-            },
-            size(): number {
-                return this.rawSize > 0 ? this.rawSize : 10;
-            }
         },
         watch: {
             page() {
@@ -64,16 +57,22 @@
             }
         },
         methods: {
-            changeLoading(isLoading: boolean) {
-                store.commit('changeLoading', isLoading);
+            changePage(page: number) {
+                if (page >= 0)
+                    this.page = page;
+            },
+            changeSize(size: number) {
+                if (size >= 1)
+                    this.size = size;
             },
             prevPage() {
-                if (this.rawPage <= 0)
-                    return;
-                this.rawPage--;
+                this.changePage(this.page - 1);
             },
             nextPage() {
-                this.rawPage++;
+                this.changePage(this.page + 1);
+            },
+            changeLoading(isLoading: boolean) {
+                store.commit('changeLoading', isLoading);
             },
             buildQuery(): Record<string, string> {
                 const query: Record<string, string> = {};
