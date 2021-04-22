@@ -15,49 +15,8 @@
         </header>
         <table class="m1 mt0">
             <thead class="no-select">
-                <tr>
-                    <th>STT</th>
-                    <th>MSSV</th>
-                    <th>Họ tên</th>
-                    <th>Lớp</th>
-                    <th>Giới tính</th>
-                    <th>Ngày sinh</th>
-                    <th>Nơi sinh</th>
-                    <th>Dân tộc</th>
-                    <th>Quốc tịch</th>
-                    <th>Ảnh</th>
-                    <th>Avatar</th>
-                    <th>SĐT</th>
-                    <th>Email</th>
-                    <th>Facebook</th>
-                </tr>
-                <tr>
-                    <td class="text-center">0</td>
-                    <td contenteditable="true" placeholder="Regex" id="studentId"
-                        v-on:keydown.enter.prevent="reload()"></td>
-                    <td contenteditable="true" placeholder="Regex" id="fullName"
-                        v-on:keypress.enter.prevent="reload()"></td>
-                    <td contenteditable="true" placeholder="Regex" id="classId"
-                        v-on:keypress.enter.prevent="reload()"></td>
-                    <td contenteditable="true" placeholder="Regex" id="gender"
-                        v-on:keypress.enter.prevent="reload()"></td>
-                    <td contenteditable="true" placeholder="Regex" id="birthday"
-                        v-on:keypress.enter.prevent="reload()"></td>
-                    <td contenteditable="true" placeholder="Regex" id="placeOfBirth"
-                        v-on:keypress.enter.prevent="reload()"></td>
-                    <td contenteditable="true" placeholder="Regex" id="ethnic"
-                        v-on:keypress.enter.prevent="reload()"></td>
-                    <td contenteditable="true" placeholder="Regex" id="nationality"
-                        v-on:keypress.enter.prevent="reload()"></td>
-                    <td></td>
-                    <td></td>
-                    <td contenteditable="true" placeholder="Regex" id="phone"
-                        v-on:keypress.enter.prevent="reload()"></td>
-                    <td contenteditable="true" placeholder="Regex" id="email"
-                        v-on:keypress.enter.prevent="reload()"></td>
-                    <td contenteditable="true" placeholder="Regex" id="facebook"
-                        v-on:keypress.enter.prevent="reload()"></td>
-                </tr>
+                <HeaderRow/>
+                <FilterRow/>
             </thead>
             <tbody>
                 <StudentItem v-for="student in studentList"
@@ -70,13 +29,16 @@
 <script lang="ts">
     import { defineComponent } from 'vue';
     import store from '@/store';
+
+    import HeaderRow from '@/components/Home.HeaderRow.vue';
+    import FilterRow from '@/components/Home.FilterRow.vue';
     import StudentItem from '@/components/StudentItem.vue';
 
     export default defineComponent({
         name: 'Home',
         store: store,
         components: {
-            StudentItem
+            HeaderRow, FilterRow, StudentItem
         },
         data() {
             return {
