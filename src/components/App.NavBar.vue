@@ -10,8 +10,8 @@
             <router-link class="tab" to="/settings">Cài đặt</router-link>
         </div>
         <div id="nav-last" class="stack py1 mla">
-            <span class="mr1" v-bind:class="classLoading"></span>
-            <button class="mla" autofocus v-on:click="toggleMenu">Menu</button>
+            <span class="mr1" :class="classLoading"></span>
+            <button class="mla" autofocus @click="toggleMenu()">Menu</button>
         </div>
     </nav>
 </template>

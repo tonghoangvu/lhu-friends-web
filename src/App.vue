@@ -5,7 +5,7 @@
             <div id="main-top"></div>  <!-- Scroll to here -->
             <router-view v-slot="{ Component }">
                 <keep-alive>
-                    <component v-bind:is="Component"/>
+                    <component :is="Component"/>
                 </keep-alive>
             </router-view>
         </div>

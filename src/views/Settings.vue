@@ -2,8 +2,8 @@
     <div id="content" class="p1 no-select">
         <h2 class="text-primary">Cài đặt</h2>
         <div class="mb1 flex-row flex-wrap align-center">
-            <select v-bind:selectedIndex="selectedIndex"
-                v-on:change="changeOtherTheme($event.target.value)">
+            <select :selectedIndex="selectedIndex"
+                @change="changeOtherTheme($event.target.value)">
                 <option value="system">Tự động</option>
                 <option value="light">Sáng</option>
                 <option value="dark">Tối</option>

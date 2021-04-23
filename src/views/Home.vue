@@ -1,14 +1,14 @@
 <template>
     <div class="float-left">
-        <ActionBar v-on:reload="loadStudents" v-on:random="randomStudents"/>
+        <ActionBar @reload="loadStudents()" @random="randomStudents()"/>
         <table class="m1 mt0">
             <thead class="no-select">
                 <HeaderRow/>
-                <FilterRow v-on:change="reload"/>
+                <FilterRow @change="reload()"/>
             </thead>
             <tbody>
                 <StudentItem v-for="student in studentList"
-                    v-bind:key="student.index" v-bind:student="student"/>
+                    :key="student.index" :student="student"/>
             </tbody>
         </table>
     </div>

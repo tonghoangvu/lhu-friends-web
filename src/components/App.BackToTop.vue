@@ -1,5 +1,5 @@
 <template>
-    <a class="back-to-top" href="#" aria-label="Back to top" v-on:click="backToTop"></a>
+    <a class="back-to-top" href="#" aria-label="Back to top" @click="backToTop()"></a>
 </template>
 
 <script lang="ts">

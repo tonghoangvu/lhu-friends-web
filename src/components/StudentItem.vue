@@ -10,21 +10,19 @@
         <td class="text-center">{{ student.ethnic }}</td>
         <td class="text-center">{{ student.nationality }}</td>
         <td class="img no-select">
-            <img v-bind:src="student.image" alt="" draggable="false">
+            <img :src="student.image" alt="" draggable="false">
         </td>
         <td class="img no-select">
-            <img v-bind:src="student.avatar" alt="" draggable="false">
+            <img :src="student.avatar" alt="" draggable="false">
         </td>
         <td class="text-center">
-            <a v-bind:href="'tel:+84' + student.phone">{{ student.phone }}</a>
+            <a :href="'tel:+84' + student.phone">{{ student.phone }}</a>
         </td>
         <td>
-            <a v-bind:href="'mailto:' + student.email">{{ student.email }}</a>
+            <a :href="'mailto:' + student.email">{{ student.email }}</a>
         </td>
         <td>
-            <a v-bind:href="student.facebook" target="_blank" rel="noreferrer">
-                {{ student.facebook }}
-            </a>
+            <a :href="student.facebook" target="_blank" rel="noreferrer">{{ student.facebook }}</a>
         </td>
     </tr>
 </template>

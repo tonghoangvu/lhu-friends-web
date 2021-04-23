@@ -1,17 +1,17 @@
 <template>
     <header class="p1 no-select">
         <label for="page" class="mr05">Trang</label>
-        <button class="mr05" v-on:click="prevPage">Trước</button>
+        <button class="mr05" @click="prevPage()">Trước</button>
         <input type="number" id="page" class="mr05" placeholder="Page"
-            v-bind:value="$store.state.page"
-            v-on:keypress.enter="changePage($event.target.value)">
-        <button class="mr05" v-on:click="nextPage">Sau</button>
+            :value="$store.state.page"
+            @keypress.enter="changePage($event.target.value)">
+        <button class="mr05" @click="nextPage()">Sau</button>
 
-        <button class="mr05" v-on:click="reload">Tải lại</button>
-        <button class="mr05" v-on:click="random">Random</button>
+        <button class="mr05" @click="reload()">Tải lại</button>
+        <button class="mr05" @click="random()">Random</button>
         <input type="number" id="size" class="mr05" placeholder="Size"
-            v-bind:value="$store.state.size"
-            v-on:keypress.enter.prevent="changeSize($event.target.value)">
+            :value="$store.state.size"
+            @keypress.enter.prevent="changeSize($event.target.value)">
 
         <label for="size">mục mỗi trang</label>
     </header>
