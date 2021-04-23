@@ -1,5 +1,5 @@
 <template>
-    <nav id="nav" class="flex-row flex-wrap bg-0 no-select px1">
+    <nav class="flex-row flex-wrap bg-0 no-select px1">
         <div class="stack" v-show="menuOpened">
             <router-link class="tab" to="/">Tìm kiếm</router-link>
         </div>
@@ -10,21 +10,28 @@
             <router-link class="tab" to="/settings">Cài đặt</router-link>
         </div>
         <div id="nav-last" class="stack py1 mla">
-            <span class="mr1" v-bind:class="$store.state.isLoading ? 'spinner' : ''"></span>
-            <button class="mla" v-on:click="toggleMenu" autofocus>Menu</button>
+            <span class="mr1" v-bind:class="classLoading"></span>
+            <button class="mla" autofocus v-on:click="toggleMenu">Menu</button>
         </div>
     </nav>
 </template>
 
 <script lang="ts">
     import { defineComponent } from 'vue';
+    import store from '@/store';
 
     export default defineComponent({
         name: 'App.NavBar',
+        store: store,
         data() {
             return {
                 menuOpened: true
             };
+        },
+        computed: {
+            classLoading() {
+                return store.state.isLoading ? 'spinner' : '';
+            }
         },
         methods: {
             toggleMenu() {

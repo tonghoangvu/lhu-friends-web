@@ -4,7 +4,7 @@
         <table class="m1 mt0">
             <thead class="no-select">
                 <HeaderRow/>
-                <FilterRow v-on:reload="reload"/>
+                <FilterRow v-on:change="reload"/>
             </thead>
             <tbody>
                 <StudentItem v-for="student in studentList"
