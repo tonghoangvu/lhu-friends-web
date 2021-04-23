@@ -4,7 +4,7 @@
         <table class="m1 mt0">
             <thead class="no-select">
                 <HeaderRow/>
-                <FilterRow/>
+                <FilterRow v-on:reload="reload"/>
             </thead>
             <tbody>
                 <StudentItem v-for="student in studentList"
@@ -31,15 +31,16 @@
         },
         data() {
             return {
-                studentList: []
+                studentList: [],
+                random: false
             };
         },
         watch: {
             '$store.state.page'() {
-                this.loadStudents();
+                this.reload();
             },
             '$store.state.size'() {
-                this.loadStudents();
+                this.reload();
             }
         },
         methods: {
@@ -105,6 +106,7 @@
                 }
             },
             async loadStudents() {
+                this.random = false;
                 const API_URL = process.env.NODE_ENV === 'production'
                     ? '/api/students/'
                     : 'http://localhost:3002/api/students/';
@@ -113,11 +115,18 @@
                 this.loadData(API_URL, params, startIndex);
             },
             async randomStudents() {
+                this.random = true;
                 const API_URL = process.env.NODE_ENV === 'production'
                     ? '/api/students/random'
                     : 'http://localhost:3002/api/students/random';
                 const params = `?size=${ store.state.size }`;
                 this.loadData(API_URL, params, 0);
+            },
+            reload() {
+                if (this.random)
+                    this.randomStudents();
+                else
+                    this.loadStudents();
             }
         }
     });
