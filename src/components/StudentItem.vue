@@ -16,10 +16,10 @@
             <img :src="student.avatar" alt="" draggable="false">
         </td>
         <td class="text-center">
-            <a :href="'tel:+84' + student.phone">{{ student.phone }}</a>
+            <a :href="`tel:+84${ student.phone }`">{{ student.phone }}</a>
         </td>
         <td>
-            <a :href="'mailto:' + student.email">{{ student.email }}</a>
+            <a :href="`mailto:${ student.email }`">{{ student.email }}</a>
         </td>
         <td>
             <a :href="student.facebook" target="_blank" rel="noreferrer">{{ student.facebook }}</a>
