@@ -2,29 +2,29 @@
     <tr>
         <td class="text-center">0</td>
         <td contenteditable="true" placeholder="Regex" id="studentId"
-            @keydown.enter.prevent="change()"></td>
+            @keydown.enter.prevent="change()" @blur="change()"></td>
         <td contenteditable="true" placeholder="Regex" id="fullName"
-            @keypress.enter.prevent="change()"></td>
+            @keypress.enter.prevent="change()" @blur="change()"></td>
         <td contenteditable="true" placeholder="Regex" id="classId"
-            @keypress.enter.prevent="change()"></td>
+            @keypress.enter.prevent="change()" @blur="change()"></td>
         <td contenteditable="true" placeholder="Regex" id="gender"
-            @keypress.enter.prevent="change()"></td>
+            @keypress.enter.prevent="change()" @blur="change()"></td>
         <td contenteditable="true" placeholder="Regex" id="birthday"
-            @keypress.enter.prevent="change()"></td>
+            @keypress.enter.prevent="change()" @blur="change()"></td>
         <td contenteditable="true" placeholder="Regex" id="placeOfBirth"
-            @keypress.enter.prevent="change()"></td>
+            @keypress.enter.prevent="change()" @blur="change()"></td>
         <td contenteditable="true" placeholder="Regex" id="ethnic"
-            @keypress.enter.prevent="change()"></td>
+            @keypress.enter.prevent="change()" @blur="change()"></td>
         <td contenteditable="true" placeholder="Regex" id="nationality"
-            @keypress.enter.prevent="change()"></td>
+            @keypress.enter.prevent="change()" @blur="change()"></td>
         <td></td>
         <td></td>
         <td contenteditable="true" placeholder="Regex" id="phone"
-            @keypress.enter.prevent="change()"></td>
+            @keypress.enter.prevent="change()" @blur="change()"></td>
         <td contenteditable="true" placeholder="Regex" id="email"
-            @keypress.enter.prevent="change()"></td>
+            @keypress.enter.prevent="change()" @blur="change()"></td>
         <td contenteditable="true" placeholder="Regex" id="facebook"
-            @keypress.enter.prevent="change()"></td>
+            @keypress.enter.prevent="change()" @blur="change()"></td>
     </tr>
 </template>
 

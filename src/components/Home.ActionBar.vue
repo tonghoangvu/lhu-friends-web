@@ -4,15 +4,16 @@
         <button class="mr05" @click="prevPage()">Trước</button>
         <input type="number" id="page" class="mr05" placeholder="Page"
             :value="$store.state.page"
-            @keypress.enter="changePage($event.target.value)">
+            @keypress.enter.prevent="changePage($event.target.value)"
+            @blur="changePage($event.target.value)">
         <button class="mr05" @click="nextPage()">Sau</button>
 
         <button class="mr05" @click="reload()">Tải lại</button>
         <button class="mr05" @click="random()">Random</button>
         <input type="number" id="size" class="mr05" placeholder="Size"
             :value="$store.state.size"
-            @keypress.enter.prevent="changeSize($event.target.value)">
-
+            @keypress.enter.prevent="changeSize($event.target.value)"
+            @blur="changeSize($event.target.value)">
         <label for="size">mục mỗi trang</label>
     </header>
 </template>
