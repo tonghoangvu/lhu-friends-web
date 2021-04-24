@@ -15,12 +15,18 @@ if (process.env.NODE_ENV === 'production') {
             console.info('Content has been cached for offline use.');
         },
         updatefound() {
+            // Clear cache
+            caches.keys().then(cacheNames => {
+                cacheNames.forEach(cacheName => {
+                    caches.delete(cacheName);
+                });
+            });
             console.info('New content is downloading.');
         },
         updated() {
+            location.reload();
+            alert('Phiên bản mới đã có sẵn, nhấn Ctrl+F5 để tiến hành cập nhật');
             console.info('New content is available, please refresh.');
-            if (confirm('Refresh lại trang để cài đặt phiên bản mới'))
-                location.reload(true);
         },
         offline() {
             console.warn('No internet connection found. App is running in offline mode.');
