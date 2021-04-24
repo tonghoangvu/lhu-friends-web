@@ -20,7 +20,7 @@ if (process.env.NODE_ENV === 'production') {
         updated() {
             console.info('New content is available, please refresh.');
             if (confirm('Refresh lại trang để cài đặt phiên bản mới'))
-                location.reload();
+                location.reload(true);
         },
         offline() {
             console.warn('No internet connection found. App is running in offline mode.');
