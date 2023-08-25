@@ -13,8 +13,8 @@
     },
     "license": "MIT",
     "scripts": {
-        "serve": "vue-cli-service serve",
-        "build": "vue-cli-service build",
+        "serve": "cross-env NODE_OPTIONS=--openssl-legacy-provider vue-cli-service serve",
+        "build": "cross-env NODE_OPTIONS=--openssl-legacy-provider vue-cli-service build",
         "lint": "vue-cli-service lint --no-fix",
         "lint:fix": "vue-cli-service lint",
         "generate-icons": "vue-asset-generate -a ./public/img/icon.svg -o ./public/img/icons --no-manifest"
@@ -36,6 +36,7 @@
         "@vue/cli-service": "~4.5.0",
         "@vue/compiler-sfc": "^3.0.0",
         "@vue/eslint-config-typescript": "^5.0.2",
+        "cross-env": "^7.0.3",
         "eslint": "^6.7.2",
         "eslint-plugin-vue": "^7.0.0-0",
         "lint-staged": "^9.5.0",
